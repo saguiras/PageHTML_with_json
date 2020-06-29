@@ -108,14 +108,21 @@
             return tooth;
         }
 
+        //liste des dents
+        const tooths = [];
+        //nombre de d85
+        var d85 = 0;
 
         async function getcoord() {
-
+            // Créée une liste de dents avec leur coordonner
             const reponse = await fetch("http://localhost:8000/static/pageApps/40623553813XP.json");
             const data = await reponse.json();
             for (var item in data) {
                 if (data[item].type == "anatomy") {
+
+                    //Dessine la dent en noir avec une transparence de 0.2 et la transparence de 1 pour le texte du numéro de la dent
                     drawsquare(data[item], 'black', 0.2, 1)
+
                     tooths.push({
                         x: data[item].pos["x"] / 2,
                         y: data[item].pos["y"] / 2,
@@ -123,6 +130,8 @@
                         height: (data[item].pos["height"] + data[item].pos["y"]) / 2,
                         subType: data[item].subType
                     })
+
+                    //Créée un element de texte pour la dent
                     let h1 = document.getElementById("from")
                     let div = '<div id=' + data[item].subType + 'div></div>'
                     h1.insertAdjacentHTML('afterbegin', div);
@@ -133,6 +142,7 @@
                 }
                 if (data[item].type == "disease") {
                     if (data[item].subType != "85") {
+                        //Dessine la dent en rouge avec une transparence de 0.5 et la transparence de 1 pour le texte numéro
                         drawsquare(data[item], 'red', 0.5, 1)
                     }
                     else {
@@ -140,11 +150,13 @@
                     }
                     if (data[item].subType == "10") {
 
+                        //renvoie le numéro de la dent sur lequel se trouve la carie
                         let tooth = whereisit(data, data[item]);
 
                         tooths.forEach(Tooth => {
                             if (Tooth.subType == tooth) {
                                 if (Tooth.Caries == null) {
+                                    //ajoute la variable carie sur la dent correspondante dans la liste Tooth
                                     Tooth['Caries'] = 1
                                 }
                                 else {
@@ -152,17 +164,20 @@
                                 }
                             }
 
+                            // affichage par disease
                             // texteApear2(tooth)
 
                         });
                     }
                     if (data[item].subType == "50") {
 
+                        //renvoie le numéro de la dent sur lequel se trouve d50
                         let tooth = whereisit(data, data[item]);
 
                         tooths.forEach(Tooth => {
                             if (Tooth.subType == tooth) {
                                 if (Tooth.d50 == null) {
+                                   //ajoute la variable carie sur la dent correspondante dans la liste Tooth
                                     Tooth['d50'] = 1
                                 }
                                 else {
@@ -175,66 +190,20 @@
 
                 }
                 if (data[item].type == "treatment") {
+                    //dessine avec transparance de 0
                     drawsquare(data[item], 'green', 0, 0)
                 }
 
             }
 
+            // affiche d85 en fin de page
             promptd85();
+            //Écrit les diseases dans le bloc de la dent correspondante
             textinframe()
         };
 
-        function visibilite(thingId) {
-            var targetElement;
-            targetElement = document.getElementById(thingId);
-            targetElement.style.display = "none";
-            /*if (targetElement.style.display == "none") {
-                targetElement.style.display = "";
-            } else {
-                targetElement.style.display = "none";
-            } */
-        }
 
-        function draw() {
-            var canvas = document.getElementById('canvas');
-            var ctx = canvas.getContext('2d');
-            ctx.drawImage(document.getElementById('image'), 0, 0);
-        };
-
-        const tooths = [];
-        var d85 = 0;
-
-        function drawsquare(item, couleur, transparance, texte) {
-            var canvas = document.getElementById('canvas');
-            var ctx = canvas.getContext('2d');
-            ctx.globalAlpha = transparance;
-            ctx.fillStyle = couleur;
-            ctx.fillRect(item.pos["x"] / 2, item.pos["y"] / 2, item.pos["width"] / 2, item.pos["height"] / 2);
-
-            ctx.font = '20px serif';
-            ctx.globalAlpha = texte;
-            ctx.fillText(item.subType, item.pos["x"] / 2, item.pos["y"] / 2);
-
-        };
-
-        function isIntersect(point, tooth) {
-            return (point.x >= tooth.x && point.x <= tooth.width &&
-                point.y >= tooth.y && point.y <= tooth.height)
-        }
-
-        function toothclick() {
-            var canvas = document.getElementById('canvas');
-            if (canvas) {
-                canvas.addEventListener('click', (e) => {
-                    const pos = {
-                        x: e.clientX - canvas.offsetLeft,
-                        y: e.clientY - canvas.offsetTop
-                    };
-                    Frame(pos);
-                });
-            }
-        }
-
+        // affichage par disease
         function texteApear2(tooth) {
             let carie = document.getElementById('carie');
             let b = document.body;
@@ -252,37 +221,25 @@
             carie.insertAdjacentHTML('afterend', htmlContent);
         }
 
-
-        function init() {
-            draw();
-            getcoord();
-            toothclick()
-        }
-        window.onload = init;
-
-        function Frame(pos) {
-            let value = true;
-            tooths.forEach(tooth => {
-                if (isIntersect(pos, tooth) && value) {
-                    document.getElementById(tooth.subType + 'div').style.display = "initial";
-                    value = false;
-                    canvas = document.getElementById("canvas");
-                    result = document.getElementById("myresult");
-                    img = document.getElementById("image");
-                    result.style.backgroundImage = "url('" + img.src + "')";
-                    result.style.backgroundSize = (canvas.width * 1.5) + "px " + (canvas.height * 1.5) + "px";
-                    result.style.backgroundPosition = "-" + (tooth.x) + "px -" + (tooth.y) + "px";
-                    document.getElementById('myresult').style.display = "block"
-                }
-                else {
-                    document.getElementById(tooth.subType + 'div').style.display = "none";
-                }
-            });
-            if (value) {
-                document.getElementById('myresult').style.display = "none"
+        // affiche d85 en fin de page
+        function promptd85() {
+            let sub = document.getElementById("general")
+            let d85html = '';
+            if (d85 == 1) {
+                d85html += '<h2 id="d85text" >d85 :</h2>'
+                d85html += '<label id="text"> probabilite de d85  </label>';
+                d85html += '<input  id="text" type="checkbox" name=d85 value=probable> <br>';
             }
+            if (d85 == 2) {
+                d85html += '<h2 id="d85text" >d85 :</h2>'
+                d85html += '<label id="text"> fort probabilite de d85  </label>';
+                d85html += '<input  id="text" type="checkbox" name=d85 value=fprobable> <br>';
+            }
+            sub.insertAdjacentHTML('afterbegin', d85html);
+
         }
 
+        //Écrit les diseases dans le bloc de la dent correspondante
         function textinframe() {
             let toothtml = '';
             tooths.forEach(tooth => {
@@ -326,35 +283,122 @@
 
             return toothtml;
         }
+       
+        //affiche l'image dans le canvas
+        function draw() {
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(document.getElementById('image'), 0, 0);
+        };
 
-        var comptRendu = "<br> <div> <h2>&emsp;Compt Rendu</h2> <p>"
+        
+        //Dessine un carré avec les coordonner de l'item, avec sa couleur, sa transparence et la transparence du texte
+        function drawsquare(item, couleur, transparance, texte) {
 
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+            ctx.globalAlpha = transparance;
+            ctx.fillStyle = couleur;
+            ctx.fillRect(item.pos["x"] / 2, item.pos["y"] / 2, item.pos["width"] / 2, item.pos["height"] / 2);
+
+            ctx.font = '20px serif';
+            ctx.globalAlpha = texte;
+            ctx.fillText(item.subType, item.pos["x"] / 2, item.pos["y"] / 2);
+
+        };
+
+
+       
+        //appel la function Fram avec les coordonner de la souris si on click sur le canvas
+        function toothclick() {
+            var canvas = document.getElementById('canvas');
+            if (canvas) {
+                canvas.addEventListener('click', (e) => {
+                    const pos = {
+                        x: e.clientX - canvas.offsetLeft,
+                        y: e.clientY - canvas.offsetTop
+                    };
+                    Frame(pos);
+                });
+            }
+        }
+
+       
+
+
+        
+        //display le bloc texte de la dent correspondante
+        function Frame(pos) {
+
+            let unefois = true;
+            tooths.forEach(tooth => {
+                if (isIntersect(pos, tooth) && unefois) {
+                    //display le texte
+                    document.getElementById(tooth.subType + 'div').style.display = "initial";
+                    unefois = false;
+
+                    //affiche le zoom de la dent, PS: Mauvaise coord
+                    canvas = document.getElementById("canvas");
+                    result = document.getElementById("myresult");
+                    img = document.getElementById("image");
+                    result.style.backgroundImage = "url('" + img.src + "')";
+                    result.style.backgroundSize = (canvas.width * 1.5) + "px " + (canvas.height * 1.5) + "px";
+                    result.style.backgroundPosition = "-" + (tooth.x) + "px -" + (tooth.y) + "px";
+                    document.getElementById('myresult').style.display = "block"
+
+                }
+                else {
+                    //undisplay les textes
+                    document.getElementById(tooth.subType + 'div').style.display = "none";
+                }
+            });
+
+            if (value) {
+                //si aucun élément sélectionne de pas afficher le zoom
+                document.getElementById('myresult').style.display = "none"
+            }
+        }
+
+        //si aucun élément sélectionne ne pas afficher le zoom
+        function isIntersect(point, tooth) {
+            return (point.x >= tooth.x && point.x <= tooth.width &&
+                point.y >= tooth.y && point.y <= tooth.height)
+        }
+
+
+        // Créée un texte HTML pour le compte rendu
         function submition() {
-
-            boolcarie = true;
-            boold50 = true;
-            carie = "";
-            d50 = "";
+            let comptRendu = "<br> <div> <h2>&emsp;Compte Rendu</h2> <p>"
+            let boolcarie = true;
+            let boold50 = true;
+            let carie = "";
+            let d50 = "";
             tooths.forEach(tooth => {
 
+                //S'il y a une carie sur la dent et que la case a été cocher alors ajouter le numéro de la dent
                 if (document.getElementsByName(tooth.subType + "carie")[0].value == "carie" &&
                     document.getElementsByName(tooth.subType + "carie")[0].checked == true) {
+                    //une fois, ajoute le titre carie
                     if (boolcarie) {
                         carie = "<br> Carie :<br>";
                         boolcarie == false;
                     }
+                    //ajoute le num de la dent
                     carie += "&ensp; dent numero " + tooth.subType + "<br>";
                 }
                 if (document.getElementsByName(tooth.subType + "d50")[0].value == "d50" &&
                     document.getElementsByName(tooth.subType + "d50")[0].checked == true) {
                     if (boold50) {
+                        //une fois, ajoute le titre d50
                         d50 = "<br> d50 :<br>";
                         boold50 == false;
                     }
+                    //ajoute le num de la dent
                     d50 += "&ensp; dent numero " + tooth.subType + "<br>";
                 }
 
             });
+
             d85 = ""
             if (document.getElementsByName('d85')[0].checked == true) {
                 if (document.getElementsByName('d85')[0].value == "probable") {
@@ -364,28 +408,23 @@
                     d85 += "<br> d85  fortement probable <br>"
                 }
             }
+
             comptRendu += carie + d50 + d85 + '</p> </div>';
+            //diplay ComptRendu en bout de page
             let body = document.body
             let html = '<p>' + comptRendu + '</p>';
             body.insertAdjacentHTML('beforeend', html);
         }
 
-        function promptd85() {
-            let sub = document.getElementById("general")
-            let d85html = '';
-            if (d85 == 1) {
-                d85html += '<h2 id="d85text" >d85 :</h2>'
-                d85html += '<label id="text"> probabilite de d85  </label>';
-                d85html += '<input  id="text" type="checkbox" name=d85 value=probable> <br>';
-            }
-            if (d85 == 2) {
-                d85html += '<h2 id="d85text" >d85 :</h2>'
-                d85html += '<label id="text"> fort probabilite de d85  </label>';
-                d85html += '<input  id="text" type="checkbox" name=d85 value=fprobable> <br>';
-            }
-            sub.insertAdjacentHTML('afterbegin', d85html);
+        
 
+       //function appeler au lancement
+        function init() {
+            draw();
+            getcoord();
+            toothclick()
         }
+        window.onload = init;
     </script>
 
     <frame id="frame"> </frame>
