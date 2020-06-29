@@ -1,0 +1,406 @@
+
+
+<body style="
+        background-color: #1e1e1e;
+        color: White;
+        font-size: 30px;">
+
+    <style>
+        img {
+            width: 0%;
+            height: auto;
+        }
+
+        h1 {
+            color: #296ac3;
+            font-size: 75px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #296ac3;
+            margin-top: 1px;
+            margin-bottom: 10px;
+        }
+
+        .img-zoom-result {
+            width: 200px;
+            height: 300px;
+        }
+
+        .submit {
+            border: none;
+            background-color: green;
+        }
+    </style>
+
+    {% load static %}
+
+    <script>
+
+        function whereisit(data, item) {
+            var distance;
+            var bestdistance = 20000;
+            var tooth = "0";
+
+            var x_disease = item.pos["x"];
+            var w_disease = item.pos["width"] + x_disease;
+            var y_disease = item.pos["y"];
+            var h_disease = item.pos["height"] + y_disease;
+
+            var x_disease_center = (x_disease + w_disease) / 2;
+            var y_disease_center = (y_disease + h_disease) / 2;
+
+            for (var i in data) {
+                if (data[i].type == "anatomy") {
+                    /*
+                    var x_tooth = data[i].pos["x"];
+                    var w_tooth = data[i].pos["width"] + x_tooth;
+
+                    if (x_tooth > x_disease) {
+                        var X_in = w_disease - x_tooth
+                    }
+                    else if (w_tooth > w_disease) {
+                        var X_in = x_disease + w_disease
+                    }
+                    else {
+                        var X_in = w_tooth - x_disease
+                    }
+
+                    var y_tooth = data[i].pos["y"];
+                    var h_tooth = data[i].pos["height"] + y_tooth;
+
+                    if (y_tooth > y_disease) {
+                        var y_in = h_disease - y_tooth
+                    }
+                    else if (h_tooth > h_disease) {
+                        var y_in = y_disease + h_disease
+                    }
+                    else {
+                        var y_in = h_tooth - y_disease
+                    }
+
+                    surface_in = y_in * X_in;
+                    if (surface_in > bestsurface_in) {
+                        bestsurface_in = surface_in;
+                        tooth = data[i].subType;
+                    }
+                    */
+
+                    var x_tooth = data[i].pos["x"];
+                    var w_tooth = data[i].pos["width"] + x_tooth;
+                    var y_tooth = data[i].pos["y"];
+                    var h_tooth = data[i].pos["height"] + y_tooth;
+
+                    var x_tooth_center = (x_tooth + w_tooth) / 2;
+                    var y_tooth_center = (y_tooth + h_tooth) / 2;
+
+
+                    distance = Math.sqrt(Math.pow((x_tooth_center - x_disease_center), 2) + Math.pow((y_tooth_center - y_disease_center), 2))
+
+                    if (distance < bestdistance) {
+                        bestdistance = distance;
+                        tooth = data[i].subType;
+                    }
+                }
+            }
+
+            return tooth;
+        }
+
+
+        async function getcoord() {
+
+            const reponse = await fetch("http://localhost:8000/static/pageApps/40623553813XP.json");
+            const data = await reponse.json();
+            for (var item in data) {
+                if (data[item].type == "anatomy") {
+                    drawsquare(data[item], 'black', 0.2, 1)
+                    tooths.push({
+                        x: data[item].pos["x"] / 2,
+                        y: data[item].pos["y"] / 2,
+                        width: (data[item].pos["width"] + data[item].pos["x"]) / 2,
+                        height: (data[item].pos["height"] + data[item].pos["y"]) / 2,
+                        subType: data[item].subType
+                    })
+                    let h1 = document.getElementById("from")
+                    let div = '<div id=' + data[item].subType + 'div></div>'
+                    h1.insertAdjacentHTML('afterbegin', div);
+                    document.getElementById(data[item].subType + 'div').style.display = "none"
+                    document.getElementById('myresult').style.display = "none"
+
+
+                }
+                if (data[item].type == "disease") {
+                    if (data[item].subType != "85") {
+                        drawsquare(data[item], 'red', 0.5, 1)
+                    }
+                    else {
+                        d85 += 1
+                    }
+                    if (data[item].subType == "10") {
+
+                        let tooth = whereisit(data, data[item]);
+
+                        tooths.forEach(Tooth => {
+                            if (Tooth.subType == tooth) {
+                                if (Tooth.Caries == null) {
+                                    Tooth['Caries'] = 1
+                                }
+                                else {
+                                    Tooth['Caries'] += 1
+                                }
+                            }
+
+                            // texteApear2(tooth)
+
+                        });
+                    }
+                    if (data[item].subType == "50") {
+
+                        let tooth = whereisit(data, data[item]);
+
+                        tooths.forEach(Tooth => {
+                            if (Tooth.subType == tooth) {
+                                if (Tooth.d50 == null) {
+                                    Tooth['d50'] = 1
+                                }
+                                else {
+                                    Tooth['d50'] += 1
+                                }
+                            }
+                        });
+
+                    }
+
+                }
+                if (data[item].type == "treatment") {
+                    drawsquare(data[item], 'green', 0, 0)
+                }
+
+            }
+
+            promptd85();
+            textinframe()
+        };
+
+        function visibilite(thingId) {
+            var targetElement;
+            targetElement = document.getElementById(thingId);
+            targetElement.style.display = "none";
+            /*if (targetElement.style.display == "none") {
+                targetElement.style.display = "";
+            } else {
+                targetElement.style.display = "none";
+            } */
+        }
+
+        function draw() {
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(document.getElementById('image'), 0, 0);
+        };
+
+        const tooths = [];
+        var d85 = 0;
+
+        function drawsquare(item, couleur, transparance, texte) {
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+            ctx.globalAlpha = transparance;
+            ctx.fillStyle = couleur;
+            ctx.fillRect(item.pos["x"] / 2, item.pos["y"] / 2, item.pos["width"] / 2, item.pos["height"] / 2);
+
+            ctx.font = '20px serif';
+            ctx.globalAlpha = texte;
+            ctx.fillText(item.subType, item.pos["x"] / 2, item.pos["y"] / 2);
+
+        };
+
+        function isIntersect(point, tooth) {
+            return (point.x >= tooth.x && point.x <= tooth.width &&
+                point.y >= tooth.y && point.y <= tooth.height)
+        }
+
+        function toothclick() {
+            var canvas = document.getElementById('canvas');
+            if (canvas) {
+                canvas.addEventListener('click', (e) => {
+                    const pos = {
+                        x: e.clientX - canvas.offsetLeft,
+                        y: e.clientY - canvas.offsetTop
+                    };
+                    Frame(pos);
+                });
+            }
+        }
+
+        function texteApear2(tooth) {
+            let carie = document.getElementById('carie');
+            let b = document.body;
+            if (carie == null) {
+                let newcarie = '<h2 id=carie>Carie :</h2>'
+                b.insertAdjacentHTML('beforeend', newcarie);
+
+                carie = document.getElementById('carie');
+            }
+
+            let htmlContent = '<label> il y a une carie sur la dent ' + tooth + ' </label>';
+            let htmlContent2 = '<input type="checkbox" name=' + tooth + 'carie value=carie>';
+
+            carie.insertAdjacentHTML('afterend', htmlContent2);
+            carie.insertAdjacentHTML('afterend', htmlContent);
+        }
+
+
+        function init() {
+            draw();
+            getcoord();
+            toothclick()
+        }
+        window.onload = init;
+
+        function Frame(pos) {
+            let value = true;
+            tooths.forEach(tooth => {
+                if (isIntersect(pos, tooth) && value) {
+                    document.getElementById(tooth.subType + 'div').style.display = "initial";
+                    value = false;
+                    canvas = document.getElementById("canvas");
+                    result = document.getElementById("myresult");
+                    img = document.getElementById("image");
+                    result.style.backgroundImage = "url('" + img.src + "')";
+                    result.style.backgroundSize = (canvas.width * 1.5) + "px " + (canvas.height * 1.5) + "px";
+                    result.style.backgroundPosition = "-" + (tooth.x) + "px -" + (tooth.y) + "px";
+                    document.getElementById('myresult').style.display = "block"
+                }
+                else {
+                    document.getElementById(tooth.subType + 'div').style.display = "none";
+                }
+            });
+            if (value) {
+                document.getElementById('myresult').style.display = "none"
+            }
+        }
+
+        function textinframe() {
+            let toothtml = '';
+            tooths.forEach(tooth => {
+
+                toothtml = '<h2 id=' + tooth.subType + ' >Dent numero ' + tooth.subType + ' :</h2>'
+                toothtml = textCarie(tooth, toothtml)
+                toothtml = textd50(tooth, toothtml)
+
+                document.getElementById(tooth.subType + 'div').innerHTML = toothtml
+                //divdisplay.insertAdjacentHTML("afterbegin", toothtml);
+
+            });
+        }
+
+        function textCarie(tooth, toothtml) {
+
+            if (tooth.Caries == null) {
+                toothtml += '<label>il n\'y a pas de carie </label>';
+                toothtml += '<input  type="checkbox" name=' + tooth.subType + 'carie value=null checked> <br>';
+            }
+            else {
+                toothtml += '<label> il y a ' + tooth.Caries + ' carie  </label>';
+                toothtml += '<input  type="checkbox" name=' + tooth.subType + 'carie value=carie> <br>';
+            }
+
+
+            return toothtml;
+        }
+
+        function textd50(tooth, toothtml) {
+
+            if (tooth.d50 == null) {
+                toothtml += '<label>il n\'y a pas de d50 </label>';
+                toothtml += '<input type="checkbox" name=' + tooth.subType + 'd50 value=null checked> <br>';
+            }
+            else {
+                toothtml += '<label> il y a ' + tooth.d50 + ' d50  </label>';
+                toothtml += '<input type="checkbox" name=' + tooth.subType + 'd50 value=d50 > <br>';
+            }
+
+
+            return toothtml;
+        }
+
+        var comptRendu = "<br> <div> <h2>&emsp;Compt Rendu</h2> <p>"
+
+        function submition() {
+
+            boolcarie = true;
+            boold50 = true;
+            carie = "";
+            d50 = "";
+            tooths.forEach(tooth => {
+
+                if (document.getElementsByName(tooth.subType + "carie")[0].value == "carie" &&
+                    document.getElementsByName(tooth.subType + "carie")[0].checked == true) {
+                    if (boolcarie) {
+                        carie = "<br> Carie :<br>";
+                        boolcarie == false;
+                    }
+                    carie += "&ensp; dent numero " + tooth.subType + "<br>";
+                }
+                if (document.getElementsByName(tooth.subType + "d50")[0].value == "d50" &&
+                    document.getElementsByName(tooth.subType + "d50")[0].checked == true) {
+                    if (boold50) {
+                        d50 = "<br> d50 :<br>";
+                        boold50 == false;
+                    }
+                    d50 += "&ensp; dent numero " + tooth.subType + "<br>";
+                }
+
+            });
+            d85 = ""
+            if (document.getElementsByName('d85')[0].checked == true) {
+                if (document.getElementsByName('d85')[0].value == "probable") {
+                    d85 += "<br> d85  probable <br>"
+                }
+                if (document.getElementsByName('d85')[0].value == "fprobable") {
+                    d85 += "<br> d85  fortement probable <br>"
+                }
+            }
+            comptRendu += carie + d50 + d85 + '</p> </div>';
+            let body = document.body
+            let html = '<p>' + comptRendu + '</p>';
+            body.insertAdjacentHTML('beforeend', html);
+        }
+
+        function promptd85() {
+            let sub = document.getElementById("general")
+            let d85html = '';
+            if (d85 == 1) {
+                d85html += '<h2 id="d85text" >d85 :</h2>'
+                d85html += '<label id="text"> probabilite de d85  </label>';
+                d85html += '<input  id="text" type="checkbox" name=d85 value=probable> <br>';
+            }
+            if (d85 == 2) {
+                d85html += '<h2 id="d85text" >d85 :</h2>'
+                d85html += '<label id="text"> fort probabilite de d85  </label>';
+                d85html += '<input  id="text" type="checkbox" name=d85 value=fprobable> <br>';
+            }
+            sub.insertAdjacentHTML('afterbegin', d85html);
+
+        }
+    </script>
+
+    <frame id="frame"> </frame>
+    <!-- <p>Le numero de client est : {{ id_client }}</p> -->
+    <img src='http://localhost:8000/static/pageApps/1.jpg' id="image" />
+    <form name="button" id="from">
+        <div id="myresult" class="img-zoom-result "></div>
+
+    </form>
+    <canvas id="canvas" width="1280" height="670"></canvas>
+    <div id='general' div></div>
+    <input type="button" id="sumbition" name="bout" value="submit" onClick="submition()" style="margin-right: 10px;">
+
+    <!-- <form action="/action_page.php">
+    <label for="add_patologies">add patologies:</label><br>
+    <input type="text" id="add_patologies" name="add_patologies"><br>
+    </form> -->
+</body>

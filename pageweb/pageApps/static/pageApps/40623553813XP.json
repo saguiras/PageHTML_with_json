@@ -1,0 +1,709 @@
+[
+
+  {
+    "pos": {
+      "x": 686,
+      "y": 795,
+      "width": 155,
+      "height": 190.99999999999997
+    },
+    "type": "anatomy",
+    "subType": "59"
+  },
+  {
+    "pos": {
+      "x": 800,
+      "y": 829,
+      "width": 161,
+      "height": 173
+    },
+    "type": "anatomy",
+    "subType": "58"
+  },
+  {
+    "pos": {
+      "x": 1043,
+      "y": 811,
+      "width": 64,
+      "height": 224
+    },
+    "type": "anatomy",
+    "subType": "56"
+  },
+  {
+    "pos": {
+      "x": 1090,
+      "y": 801.0000000000001,
+      "width": 57,
+      "height": 230.00000000000003
+    },
+    "type": "anatomy",
+    "subType": "55"
+  },
+  {
+    "pos": {
+      "x": 1159,
+      "y": 797.0000000000001,
+      "width": 41,
+      "height": 212
+    },
+    "type": "anatomy",
+    "subType": "54"
+  },
+  {
+    "pos": {
+      "x": 1210,
+      "y": 786.0000000000001,
+      "width": 39,
+      "height": 229.00000000000003
+    },
+    "type": "anatomy",
+    "subType": "53"
+  },
+  {
+    "pos": {
+      "x": 1758.9999999999998,
+      "y": 777,
+      "width": 154,
+      "height": 166
+    },
+    "type": "anatomy",
+    "subType": "52"
+  },
+  {
+    "pos": {
+      "x": 1639.0000000000002,
+      "y": 810,
+      "width": 139,
+      "height": 164
+    },
+    "type": "anatomy",
+    "subType": "51"
+  },
+  {
+    "pos": {
+      "x": 1522,
+      "y": 823.0000000000001,
+      "width": 164,
+      "height": 188
+    },
+    "type": "anatomy",
+    "subType": "50"
+  },
+  {
+    "pos": {
+      "x": 1427,
+      "y": 816.0000000000001,
+      "width": 82,
+      "height": 212
+    },
+    "type": "anatomy",
+    "subType": "48"
+  },
+  {
+    "pos": {
+      "x": 1355,
+      "y": 806,
+      "width": 65,
+      "height": 237
+    },
+    "type": "anatomy",
+    "subType": "47"
+  },
+  {
+    "pos": {
+      "x": 1300,
+      "y": 797.0000000000001,
+      "width": 57.99999999999999,
+      "height": 216.00000000000003
+    },
+    "type": "anatomy",
+    "subType": "46"
+  },
+  {
+    "pos": {
+      "x": 1255,
+      "y": 784,
+      "width": 46,
+      "height": 226
+    },
+    "type": "anatomy",
+    "subType": "45"
+  },
+  {
+    "pos": {
+      "x": 1778,
+      "y": 489.99999999999994,
+      "width": 115.99999999999999,
+      "height": 168
+    },
+    "type": "anatomy",
+    "subType": "44"
+  },
+  {
+    "pos": {
+      "x": 1709,
+      "y": 551,
+      "width": 88,
+      "height": 199
+    },
+    "type": "anatomy",
+    "subType": "43"
+  },
+  {
+    "pos": {
+      "x": 1602.9999999999998,
+      "y": 552,
+      "width": 95.00000000000001,
+      "height": 211
+    },
+    "type": "anatomy",
+    "subType": "42"
+  },
+  {
+    "pos": {
+      "x": 1520.9999999999998,
+      "y": 550,
+      "width": 68,
+      "height": 217.00000000000003
+    },
+    "type": "anatomy",
+    "subType": "41"
+  },
+  {
+    "pos": {
+      "x": 1458,
+      "y": 551,
+      "width": 53,
+      "height": 205.99999999999997
+    },
+    "type": "anatomy",
+    "subType": "40"
+  },
+  {
+    "pos": {
+      "x": 1389,
+      "y": 496,
+      "width": 67,
+      "height": 269
+    },
+    "type": "anatomy",
+    "subType": "39"
+  },
+  {
+    "pos": {
+      "x": 1328,
+      "y": 526,
+      "width": 53,
+      "height": 228
+    },
+    "type": "anatomy",
+    "subType": "38"
+  },
+  {
+    "pos": {
+      "x": 1249,
+      "y": 510.00000000000006,
+      "width": 71,
+      "height": 243.99999999999997
+    },
+    "type": "anatomy",
+    "subType": "37"
+  },
+  {
+    "pos": {
+      "x": 679,
+      "y": 540,
+      "width": 97,
+      "height": 199
+    },
+    "type": "anatomy",
+    "subType": "35"
+  },
+  {
+    "pos": {
+      "x": 789,
+      "y": 548,
+      "width": 100,
+      "height": 213
+    },
+    "type": "anatomy",
+    "subType": "34"
+  },
+  {
+    "pos": {
+      "x": 895,
+      "y": 543,
+      "width": 69,
+      "height": 220
+    },
+    "type": "anatomy",
+    "subType": "33"
+  },
+  {
+    "pos": {
+      "x": 966,
+      "y": 555,
+      "width": 67,
+      "height": 190.00000000000003
+    },
+    "type": "anatomy",
+    "subType": "32"
+  },
+  {
+    "pos": {
+      "x": 1034,
+      "y": 492,
+      "width": 64,
+      "height": 264
+    },
+    "type": "anatomy",
+    "subType": "31"
+  },
+  {
+    "pos": {
+      "x": 1105,
+      "y": 506,
+      "width": 57.99999999999999,
+      "height": 248
+    },
+    "type": "anatomy",
+    "subType": "30"
+  },
+  {
+    "pos": {
+      "x": 1170,
+      "y": 492,
+      "width": 71,
+      "height": 256
+    },
+    "type": "anatomy",
+    "subType": "29"
+  },
+  {
+    "pos": {
+      "x": 1698.0000000000002,
+      "y": 676,
+      "width": 82,
+      "height": 74
+    },
+    "type": "treatment",
+    "subType": "1"
+  },
+  {
+    "pos": {
+      "x": 1444,
+      "y": 819.9999999999999,
+      "width": 68,
+      "height": 66
+    },
+    "type": "treatment",
+    "subType": "1"
+  },
+  {
+    "pos": {
+      "x": 1358,
+      "y": 693,
+      "width": 23.999999999999996,
+      "height": 38
+    },
+    "type": "treatment",
+    "subType": "7"
+  },
+  {
+    "pos": {
+      "x": 1438,
+      "y": 682,
+      "width": 79,
+      "height": 75
+    },
+    "type": "treatment",
+    "subType": "14"
+  },
+  {
+    "pos": {
+      "x": 1550.0000000000002,
+      "y": 893,
+      "width": 107,
+      "height": 68
+    },
+    "type": "treatment",
+    "subType": "11"
+  },
+  {
+    "pos": {
+      "x": 1673,
+      "y": 858,
+      "width": 87,
+      "height": 78
+    },
+    "type": "treatment",
+    "subType": "11"
+  },
+  {
+    "pos": {
+      "x": 673,
+      "y": 917,
+      "width": 87,
+      "height": 82
+    },
+    "type": "treatment",
+    "subType": "2"
+  },
+  {
+    "pos": {
+      "x": 804,
+      "y": 900,
+      "width": 124,
+      "height": 68
+    },
+    "type": "treatment",
+    "subType": "11"
+  },
+  {
+    "pos": {
+      "x": 1622,
+      "y": 545,
+      "width": 66,
+      "height": 142
+    },
+    "type": "treatment",
+    "subType": "2"
+  },
+  {
+    "pos": {
+      "x": 1515,
+      "y": 815,
+      "width": 133,
+      "height": 77
+    },
+    "type": "treatment",
+    "subType": "14"
+  },
+  {
+    "pos": {
+      "x": 728,
+      "y": 789.9999999999999,
+      "width": 318,
+      "height": 124
+    },
+    "type": "treatment",
+    "subType": "16"
+  },
+  {
+    "pos": {
+      "x": 701,
+      "y": 862,
+      "width": 93,
+      "height": 74
+    },
+    "type": "treatment",
+    "subType": "11"
+  },
+  {
+    "pos": {
+      "x": 917,
+      "y": 636,
+      "width": 23.999999999999996,
+      "height": 66
+    },
+    "type": "treatment",
+    "subType": "10"
+  },
+  {
+    "pos": {
+      "x": 1518,
+      "y": 699,
+      "width": 76,
+      "height": 60.99999999999999
+    },
+    "type": "treatment",
+    "subType": "1"
+  },
+  {
+    "pos": {
+      "x": 674,
+      "y": 651,
+      "width": 107,
+      "height": 107
+    },
+    "type": "treatment",
+    "subType": "14"
+  },
+  {
+    "pos": {
+      "x": 1463,
+      "y": 570,
+      "width": 38,
+      "height": 110
+    },
+    "type": "treatment",
+    "subType": "2"
+  },
+  {
+    "pos": {
+      "x": 886,
+      "y": 678,
+      "width": 77,
+      "height": 84
+    },
+    "type": "treatment",
+    "subType": "14"
+  },
+  {
+    "pos": {
+      "x": 963,
+      "y": 663,
+      "width": 98,
+      "height": 102.00000000000001
+    },
+    "type": "treatment",
+    "subType": "14"
+  },
+  {
+    "pos": {
+      "x": 1638,
+      "y": 806,
+      "width": 115.00000000000001,
+      "height": 64
+    },
+    "type": "treatment",
+    "subType": "14"
+  },
+  {
+    "pos": {
+      "x": 979.9999999999999,
+      "y": 613,
+      "width": 40,
+      "height": 62
+    },
+    "type": "treatment",
+    "subType": "10"
+  },
+  {
+    "pos": {
+      "x": 777,
+      "y": 662,
+      "width": 112,
+      "height": 101
+    },
+    "type": "treatment",
+    "subType": "14"
+  },
+  {
+    "pos": {
+      "x": 1248,
+      "y": 672,
+      "width": 31,
+      "height": 47
+    },
+    "type": "treatment",
+    "subType": "7"
+  },
+  {
+    "pos": {
+      "x": 968.0000000000001,
+      "y": 560,
+      "width": 31,
+      "height": 60
+    },
+    "type": "treatment",
+    "subType": "2"
+  },
+  {
+    "pos": {
+      "x": 789,
+      "y": 549,
+      "width": 84,
+      "height": 102.99999999999999
+    },
+    "type": "treatment",
+    "subType": "2"
+  },
+  {
+    "pos": {
+      "x": 912,
+      "y": 551,
+      "width": 26,
+      "height": 79
+    },
+    "type": "treatment",
+    "subType": "2"
+  },
+  {
+    "pos": {
+      "x": 1593,
+      "y": 699,
+      "width": 108.99999999999999,
+      "height": 70
+    },
+    "type": "treatment",
+    "subType": "1"
+  },
+  {
+    "pos": {
+      "x": 1243,
+      "y": 681,
+      "width": 26,
+      "height": 47
+    },
+    "type": "treatment",
+    "subType": "7"
+  },
+  {
+    "pos": {
+      "x": 1463,
+      "y": 624,
+      "width": 27.000000000000004,
+      "height": 67
+    },
+    "type": "treatment",
+    "subType": "10"
+  },
+  {
+    "pos": {
+      "x": 701,
+      "y": 521,
+      "width": 59,
+      "height": 126
+    },
+    "type": "treatment",
+    "subType": "2"
+  },
+  {
+    "pos": {
+      "x": 813,
+      "y": 596,
+      "width": 46,
+      "height": 92
+    },
+    "type": "treatment",
+    "subType": "11"
+  },
+  {
+    "pos": {
+      "x": 701,
+      "y": 564,
+      "width": 49,
+      "height": 110
+    },
+    "type": "treatment",
+    "subType": "11"
+  },
+  {
+    "pos": {
+      "x": 1691.0000000000002,
+      "y": 904,
+      "width": 92,
+      "height": 77
+    },
+    "type": "treatment",
+    "subType": "2"
+  },
+  {
+    "pos": {
+      "x": 797.0000000000001,
+      "y": 957.0000000000001,
+      "width": 97,
+      "height": 67
+    },
+    "type": "treatment",
+    "subType": "2"
+  },
+  {
+    "pos": {
+      "x": 812.0000000000001,
+      "y": 597,
+      "width": 47,
+      "height": 86
+    },
+    "type": "treatment",
+    "subType": "10"
+  },
+  {
+    "pos": {
+      "x": 1842,
+      "y": 897,
+      "width": 77,
+      "height": 72
+    },
+    "type": "disease",
+    "subType": "50"
+  },
+  {
+    "pos": {
+      "x": 1929.0000000000002,
+      "y": 985,
+      "width": 202,
+      "height": 101
+    },
+    "type": "disease",
+    "subType": "85"
+  },
+  {
+    "pos": {
+      "x": 0,
+      "y": 0
+    },
+    "type": "landmark",
+    "subType": "29",
+    "presence": 0
+  },
+  {
+    "pos": {
+      "x": 0,
+      "y": 0
+    },
+    "type": "landmark",
+    "subType": "42",
+    "presence": 0
+  },
+  {
+    "pos": {
+      "x": 0,
+      "y": 0
+    },
+    "type": "landmark",
+    "subType": "50",
+    "presence": 0
+  },
+  {
+    "pos": {
+      "x": 0,
+      "y": 0
+    },
+    "type": "landmark",
+    "subType": "53",
+    "presence": 0
+  },
+  {
+    "pos": {
+      "x": 1574.568892327611,
+      "y": 998.8270032079574,
+      "width": 64.22379882796115,
+      "height": 62.71476568167632
+    },
+    "type": "disease",
+    "subType": "10"
+  },
+  {
+    "pos": {
+      "x": 822.0546962519737,
+      "y": 1004.8505058240597,
+      "width": 55.6267560007842,
+      "height": 51.3115151910157
+    },
+    "type": "disease",
+    "subType": "10"
+  },
+  {
+    "pos": {
+      "x": 759.2963048664736,
+      "y": 992.0226270263057,
+      "width": 59.200428923841045,
+      "height": 44.184915858930346
+    },
+    "type": "disease",
+    "subType": "10"
+  }
+]

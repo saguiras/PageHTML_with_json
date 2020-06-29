@@ -1,0 +1,87 @@
+<!-- <body style="
+        background-color: #1e1e1e;
+        color: White;
+        font-size: 30px;">
+
+        <style>
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            h1 {
+                color: #296ac3;
+                font-size: 100px;
+                text-align: center;
+            }
+
+            h2 {
+                color: #296ac3;
+            }
+        </style>
+
+        <script>
+            function isNormalInteger(str) {
+                str = str.trim();
+                if (!str) {
+                    return false;
+                }
+                str = str.replace(/^0+/, "") || "0";
+                var n = Math.floor(Number(str));
+                return n !== Infinity && String(n) === str && n >= 0;
+            }
+
+            function afficher() {
+                var val = document.getElementById("id_client").value
+                if (isNormalInteger(val)) {
+                    var url = "http://localhost:8000/pageApps/client/" + val;
+                    window.location.replace(url)
+                }
+                else {
+                    document.getElementById("texte2").textContent = "not a valide Id";
+                }
+
+            }
+
+
+        </script>
+
+        <h1>Accueil</h1>
+
+        <form action="/action_page.php">
+            <label for="id_client">ID client:</label><br>
+            <input type="text" id="id_client" name="id_client" value=""><br>
+            <input type="button" id="bouton" value="go to url" size="100" onclick="afficher()"><br><br>
+        </form>
+
+        <p id="texte2" style="color:red;"></p>
+        <br>
+
+
+
+
+
+    </body>
+-->
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF8">
+    <title>Le titre du document</title>
+    <script src="https://unpkg.com/js-image-zoom@0.4.1/js-image-zoom.js" type="application/javascript"></script>
+</head>
+<body>
+    <div id="img-container" style="width: 400px">
+        <img src="https://assets.architecturaldesigns.com/plan_assets/324992268/large/23703JD_01_1553616680.jpg?1553616681" />
+        <div>
+            <script>
+                var options = {
+                    width: 400,
+                    zoomWidth: 500,
+                    offset: { vertical: 0, horizontal: 10 }
+                };
+                new ImageZoom(document.getElementById("img-container"), options);
+
+            </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+
+<!-- saved from url=(0039)http://localhost:8000/pageApps/client/1 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--text" media="screen">*:not(pre) {
+  -webkit-text-stroke: 0.2px !important;
+  text-stroke: 0.2px !important;
+}</style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble, embed[type="application/pdf"] {
+    filter: invert(100%) hue-rotate(180deg) brightness(105%) contrast(95%) !important;
+}</style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}</style><style class="darkreader darkreader--user-agent" media="screen">html {
+    background-color: #141617 !important;
+}
+html, body, input, textarea, select, button {
+    background-color: #141617;
+}
+html, body, input, textarea, select, button {
+    border-color: #5a5a5a;
+    color: #f9f7f4;
+}
+a {
+    color: #3299ff;
+}
+table {
+    border-color: #4d4d4d;
+}
+::placeholder {
+    color: #c7c1b6;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #565e00 !important;
+    color: #f9f7f4 !important;
+}
+::-webkit-scrollbar {
+    background-color: #181b1c;
+    color: #d3cec6;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #2d3133;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #373b3e;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #3d4043;
+}
+::-webkit-scrollbar-corner {
+    background-color: #141617;
+}
+* {
+    scrollbar-color: #181b1c #2d3133;
+}
+::selection {
+    background-color: #005fdb !important;
+    color: #ffffff !important;
+}
+::-moz-selection {
+    background-color: #005fdb !important;
+    color: #ffffff !important;
+}</style><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: #815500 !important;
+    border-color: #e8bc0e !important;
+    color: #fff9d6 !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}</style></head><body style="background-color: rgb(30, 30, 30); color: white; font-size: 30px; --darkreader-inline-bgcolor:#181b1c; --darkreader-inline-color:#ffffff;" data-darkreader-inline-bgcolor="" data-darkreader-inline-color="">
+
+        <style>
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            h1 {
+                color: #296ac3;
+                font-size: 100px;
+                text-align: center;
+            }
+
+            h2 {
+                color: #296ac3;
+            }
+        </style><style class="darkreader darkreader--sync" media="screen"></style>
+
+        <script>
+            var img = new String('pageApps/' + id_client + '.jpg')
+            var requestfill = "file:///C:/Users/julien/Documents/dentiste/pageweb/pageApps/templates/pageApps/40623553813XP.json";
+            var request = new XMLHttpRequest();
+            request.open('GET', requestfill);
+            request.responseType = 'json';
+            request.send();
+            request.onload = function () {
+                var jason = request.response;
+                populateHeader(jason);
+            }
+            window.onload = function () {
+                document.getElementById('img').src = img;
+            };
+            function populateHeader(jsonObj) {
+                var myH1 = document.createElement('h1');
+                myH1.textContent = jsonObj['anatomy'];
+                header.appendChild(myH1);
+
+            }
+        </script>
+
+        <h1>Bienvenue</h1>
+        <p>Le numero de client est : 1</p>
+
+        
+        <img src="http://localhost:8000/pageApps/client/1" alt="Mon image" id="img">
+
+
+
+        <hr>
+        <h2>Carie :</h2>
+        
+        <p class="empty">
+            Pas de carie detecte.
+            <input type="checkbox" id="carie" name="carie" value="carie">
+        </p>
+        
+
+
+        <hr>
+        <h2>other :</h2>
+        
+        <p class="empty">
+            Pas de other detecte.
+            <input type="checkbox" id="carie" name="carie" value="carie">
+        </p>
+        
+        <hr>
+
+        <!-- <form action="/action_page.php"> -->
+        <label for="add_patologies">add patologies:</label><br>
+        <input type="text" id="add_patologies" name="add_patologies"><br>
+        <!-- </form> -->
+    
+</body></html>
