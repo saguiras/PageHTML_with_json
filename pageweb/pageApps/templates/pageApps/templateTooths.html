@@ -1,0 +1,32 @@
+<html>
+<body>
+    <ul>
+        {% for i in body %}
+
+        {% if i.type == 'anatomy' %}
+        {% if i.disease %}
+
+        <li> dent numero {{ i.subType }} : </li>
+
+        <ul>
+            {% for d,v in i.disease.items %}
+            <li>il y a {{v}} {{d}}  </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endif %}
+
+
+        {% if i.type == 'd85' %}
+        <br />
+        {% if i.subType == '1'  %}
+        <li> probabilit&eacute; de d85</li>
+        {% endif %}
+        {% if i.subType > '1'  %}
+        <li> forte probabilit&eacute; de d85</li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+    </ul>
+</body>
+</html>
